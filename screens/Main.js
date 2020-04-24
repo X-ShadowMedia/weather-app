@@ -1,13 +1,13 @@
 import React from 'react';
-import {StyleSheet, Image} from 'react-native';
+import {View, StyleSheet, Image} from 'react-native';
 import EventsBlock from '../components/EventsBlock';
 import TempBlock from '../components/TempBlock';
 import TextBody from '../components/TextBody';
-import Title from '../components/Title'
+import Title from '../components/Title';
 
 const Main = () => {
     return(
-        <View>
+        <View style={styles.body}>
         <EventsBlock>
         <Title>Today's Events</Title>
         <View style={styles.listItems}>
@@ -23,7 +23,7 @@ const Main = () => {
           <TextBody style={styles.item}>14:00   Pick Carol from School</TextBody>
           <TextBody style={styles.item}>17:00   Spinning Class</TextBody>
           <TextBody style={styles.itemLast}>20:00   Business Meeting</TextBody>
-          <View style={styles.arrow}><Image source={require('./assets/img/arrow.png')}/></View>
+          <View style={styles.arrow}><Image source={require('../assets/img/arrow.png')}/></View>
         </View>
       </EventsBlock>
 
@@ -33,6 +33,12 @@ const Main = () => {
 }
 
 const styles = StyleSheet.create({
+    body: {
+        
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%'
+    },
     listItems: {
         width: '100%',
         justifyContent: 'flex-end',
