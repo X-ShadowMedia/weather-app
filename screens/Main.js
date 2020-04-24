@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, Image} from 'react-native';
 import EventsBlock from '../components/EventsBlock';
+import TempBlock from '../components/TempBlock';
 import TextBody from '../components/TextBody';
 import Title from '../components/Title'
 
