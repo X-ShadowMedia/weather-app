@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
-import { Text, View } from 'react-native';
-import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
-import MealsNavigator from './Navigation/MealsNavigator';
+import WeatherNavigation from './Navigation/WeatherNavigation';
+import { FontDisplay } from 'expo-font';
+
 
 const fetchFonts = () => {
   Font.loadAsync({
-    'avenir-book': require('./assets/fonts/AvenirLTStd-Book.ttf'),
-  })
+    'avenirBook': {
+      url: require('./assets/fonts/AvenirLTStd-Book.ttf'),
+      fontDisplay: FontDisplay.FALLBACK,
+    }
+  });
 }
 
 export default function App() {
@@ -15,14 +18,10 @@ export default function App() {
   const [fontLoaded, setFontLoaded] = useState(false);
 
   if(!fontLoaded) {
-    return (
-      <AppLoading 
-        startAsync={fetchFonts} 
-        onFinish={() => setFontLoaded(true)} />
-    );
+    return <AppLoading startAsync={fetchFonts} onFinish={() => setFontLoaded(true)} />
   }
 
   return (
-    <MealsNavigator/ >
+      <WeatherNavigation />
   );
 }

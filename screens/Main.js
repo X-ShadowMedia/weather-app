@@ -1,64 +1,56 @@
 import React from 'react';
-import {View, StyleSheet, Image} from 'react-native';
+import {View, StyleSheet, Button, TouchableOpacity, Text} from 'react-native';
 import EventsBlock from '../components/EventsBlock';
 import TempBlock from '../components/TempBlock';
+import Header from '../components/Header';
 import TextBody from '../components/TextBody';
 import Title from '../components/Title';
 
-const Main = () => {
+const Main = props => {
     return(
+      <View style={styles.screen}>
         <View style={styles.body}>
-        <EventsBlock>
-        <Title>Today's Events</Title>
-        <View style={styles.listItems}>
-          <TextBody style={styles.item}>14:00   Pick Carol from School</TextBody>
-          <TextBody style={styles.item}>17:00   Yoga in Loha Gym</TextBody>
-          <TextBody style={styles.item}>20:00   Dinner with Joe at Francesco's</TextBody>
-        </View>
-      </EventsBlock>
 
-      <EventsBlock>
-        <Title>Next Events</Title>
-        <View style={styles.listItems}>
-          <TextBody style={styles.item}>14:00   Pick Carol from School</TextBody>
-          <TextBody style={styles.item}>17:00   Spinning Class</TextBody>
-          <TextBody style={styles.itemLast}>20:00   Business Meeting</TextBody>
-          <View style={styles.arrow}><Image source={require('../assets/img/arrow.png')}/></View>
-        </View>
-      </EventsBlock>
+          <View style={styles.header}><Header onPressCalendar={() => {
+            props.navigation.navigate({routeName: 'Calendar'}) 
+          }}/></View>
 
-      <TempBlock />
+          <TextBody>Main Page</TextBody>
+
+          <View  style={styles.button}><Button title="Go to Event Detail" onPress={() => {
+            props.navigation.navigate({routeName: 'EventDetails'});
+          }}/></View>
+
+          <View  style={styles.button}><Button title="Go to Next Events" onPress={() => {
+            props.navigation.navigate({routeName: 'NextEvents'});
+          }}/></View>
+        </View>
       </View>
     );
-}
+};
 
 const styles = StyleSheet.create({
     body: {
-        
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignItems: 'center',
         width: '100%'
     },
-    listItems: {
+    screen: {
+      flex: 1,
+      backgroundColor: '#1665c1',
+      justifyContent: 'flex-start',
+      alignItems: 'center',
+    },
+    header:{
+        flex: 1,
+        height: '5%',
         width: '100%',
-        justifyContent: 'flex-end',
-        alignItems: 'flex-start'
-      }, 
-      item:{
-        width: '100%',
-        borderBottomColor: 'white',
-        borderBottomWidth: 0.4,
-        paddingLeft: 30
-      }, 
-      itemLast: {
-        width: '100%',
-        paddingLeft: 30
-      },
-      arrow: {
-        width: '100%',
-        justifyContent: 'center',
-        alignItems: 'center'
-      }
+        padding: 10,
+        marginBottom: 30
+    },
+    button: {
+      padding: 10,
+    }
 });
 
 export default Main;

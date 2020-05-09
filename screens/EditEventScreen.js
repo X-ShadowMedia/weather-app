@@ -2,10 +2,10 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import TextBody from '../components/TextBody';
 
-const AddEventScreen = () => {
+const EditEventScreen = () => {
     return (
         <View style={styles.screen}>
-            <TextBody>Add Event Screen</TextBody>
+            <TextBody>Edit Event Screen</TextBody>
         </View>
     );
 }
@@ -19,4 +19,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default AddEventScreen;
+export default EditEventScreen;

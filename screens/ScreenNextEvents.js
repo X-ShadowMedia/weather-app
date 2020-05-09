@@ -1,26 +1,21 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
 import TextBody from '../components/TextBody';
 import Title from '../components/Title';
 import EventsBlock from '../components/EventsBlock';
+import Header from '../components/Header';
 
-const ScreenNextEvents = () => {
+const ScreenNextEvents = props => {
   return (
     <View style={styles.screen}>
-      <Header />
-      <EventsBlock>
-        <Title>Next Events</Title>
-        <View style={styles.listItems}>
-          <TextBody style={styles.item}>14:00   Pick Carol from School</TextBody>
-          <TextBody style={styles.item}>17:00   Spinning Class</TextBody>
-          <TextBody style={styles.itemLast}>20:00   Business Meeting</TextBody>
-          <View style={styles.arrow}><Image source={require('../assets/img/arrow.png')}/></View>
-        </View>
-      </EventsBlock>
-
-      <EventsBlock>
-        <Title>+ Add Event</Title>
-      </EventsBlock>
+      <View style={styles.body}>
+        <View style={styles.header}><Header onPressCalendar={() => {
+              props.navigation.navigate({routeName: 'Calendar'}) 
+            }} onPressBack={() => {
+              props.navigation.goBack();
+            }}/></View>
+        <TextBody>Next Events Screen</TextBody>
+      </View>
     </View>
   );
 };
@@ -28,12 +23,24 @@ const ScreenNextEvents = () => {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "flex-start",
     alignItems: "center",
-    backgroundColor: '#f33',
+    backgroundColor: '#1665c1',
   },
   text: {
     fontSize: 150,
+  },
+  header: {
+    flex: 1,
+        height: '5%',
+        width: '100%',
+        padding: 10,
+        marginBottom: 30
+  },
+  body: {
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    width: '100%'
   }
 });
 
