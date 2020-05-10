@@ -5,7 +5,7 @@ const Title = props => <Text style={{...styles.body, ...props.style}}>{props.chi
 
 const styles = StyleSheet.create({
     body: {
-        fontFamily: 'Avenir-medium',
+        fontFamily: 'avenir-medium',
         fontSize: 30,
         color: 'white'
     }

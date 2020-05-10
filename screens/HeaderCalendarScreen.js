@@ -2,14 +2,14 @@ import React from 'react';
 import {View, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-const Header = props => {
+const HeaderCalendarScreen = props => {
     return(
         <View style={styles.headerBody}>
         <TouchableOpacity style={styles.bodyLeft}>
             <Ionicons name="md-arrow-back" color="white" size={30} onPress={props.onPressBack}/>
         </TouchableOpacity>
         <TouchableOpacity style={styles.bodyRight}>
-            <Ionicons name="md-calendar" color="white" size={30} onPress={props.onPressCalendar}/>
+            <Ionicons name="md-add" color="white" size={30} onPress={props.onPressAdd}/>
         </TouchableOpacity>
         </View>
     );
@@ -34,4 +34,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Header;
+export default HeaderCalendarScreen;

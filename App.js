@@ -1,41 +1,27 @@
-import React, {useState} from 'react';
-import { Text, StyleSheet, View, Image } from 'react-native';
-import Header from './components/Header';
-import ScreenNextEvents from './screens/ScreenNextEvents';
-import Main from './screens/Main';
-import * as Font from 'expo-font';
+import React, { useState } from 'react';
 import { AppLoading } from 'expo';
+import WeatherNavigation from './Navigation/WeatherNavigation';
+import { FontDisplay } from 'expo-font';
+
 
 const fetchFonts = () => {
-  return Font.loadAsync({
-    'Avenir-medium': require('./assets/fonts/AvenirLTStd-Medium.otf'),
-    'Avenir-book': require('./assets/fonts/AvenirLTStd-Book.otf'),
-    'Avenir-roman': require('./assets/fonts/AvenirLTStd-Roman.otf')
+  Font.loadAsync({
+    'avenirBook': {
+      url: require('./assets/fonts/AvenirLTStd-Book.ttf'),
+      fontDisplay: FontDisplay.FALLBACK,
+    }
   });
 }
 
 export default function App() {
 
-  const [dataLoaded, setDataLoaded] = useState(false);
+  const [fontLoaded, setFontLoaded] = useState(false);
 
-  if (!dataLoaded){
-   return <AppLoading startAsync={fetchFonts} onFinish={() => setDataLoaded(true)} onError={(err) => console.log(err)} />
+  if(!fontLoaded) {
+    return <AppLoading startAsync={fetchFonts} onFinish={() => setFontLoaded(true)} />
   }
 
   return (
-    <View style={styles.screen}>
-      <Header />
-      <Main />
-    </View>
+      <WeatherNavigation />
   );
 }
-
-const styles = StyleSheet.create({
-  screen: {
-    flexDirection: 'column',
-    backgroundColor: '#1665c1',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-    height: '100%'
-  }
-});
