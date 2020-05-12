@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import { AppLoading } from 'expo';
 import WeatherNavigation from './Navigation/WeatherNavigation';
-import { FontDisplay } from 'expo-font';
+import Font from 'expo-font';
 
 
 const fetchFonts = () => {
   Font.loadAsync({
-    'avenirBook': {
-      url: require('./assets/fonts/AvenirLTStd-Book.ttf'),
-      fontDisplay: FontDisplay.FALLBACK,
-    }
+    'avenirBook': require('./assets/fonts/AvenirLTStd-Book.ttf'),
+    'avenirMedium': require('./assets/fonts/AvenirLTStd-Medium.ttf'),
   });
 }
 
