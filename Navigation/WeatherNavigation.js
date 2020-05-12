@@ -5,7 +5,7 @@ import CalendarScreen from '../screens/CalendarScreen';
 import EventDetailsScreen from '../screens/EventDetailsScreen';
 import NextEventsScreen from '../screens/ScreenNextEvents';
 import AddEventScreen from '../screens/AddEventScreen';
-import EditEventScreen from '../screens/EditEventScreen';
+import EditEventScreen from '../screens/EditEventScreen';  
 
 import { createAppContainer } from 'react-navigation';
 
