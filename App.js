@@ -1,25 +1,16 @@
-import React, { useState } from 'react';
-import { AppLoading } from 'expo';
-import WeatherNavigation from './Navigation/WeatherNavigation';
-import Font from 'expo-font';
-
-
-const fetchFonts = () => {
-  Font.loadAsync({
-    'avenirBook': require('./assets/fonts/AvenirLTStd-Book.ttf'),
-    'avenirMedium': require('./assets/fonts/AvenirLTStd-Medium.ttf'),
-  });
-}
+import React from "react";
+import { AppLoading } from "expo";
+import { useFonts } from "@use-expo/font";
+import WeatherNavigation from "./Navigation/WeatherNavigation";
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    avenirBook: require("./assets/fonts/AvenirLTStd-Book.ttf"),
+    avenirMedium: require("./assets/fonts/AvenirLTStd-Medium.ttf"),
+  });
 
-  const [fontLoaded, setFontLoaded] = useState(false);
-
-  if(!fontLoaded) {
-    return <AppLoading startAsync={fetchFonts} onFinish={() => setFontLoaded(true)} />
+  if (!fontsLoaded) {
+    return <AppLoading />;
   }
-
-  return (
-      <WeatherNavigation />
-  );
+  return <WeatherNavigation />;
 }
