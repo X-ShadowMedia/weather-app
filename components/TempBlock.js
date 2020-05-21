@@ -6,50 +6,7 @@ import Title from './Title';
 const TempBlock = () => {
     return (
         <View style={styles.body}>
-
-            <Title style={styles.title}>Terrassa</Title>
-
-            <View style={styles.column2}>
-                <View>
-                    <TextBody style={styles.degrees}>10º</TextBody>
-                    <TextBody style={styles.sky}>Sunny</TextBody>
-                </View>
-                <Image source={require('../assets/img/sun.png')} style={styles.sun}/>
-            </View>
-
-            <View style={styles.column3}>
-                <View style={styles.column3_Item}>
-                    <TextBody>Now</TextBody>
-                    <Image source={require('../assets/img/sun.png')} style={styles.now} />
-                </View>
-                <View style={styles.column3_Item}>
-                    <TextBody>17</TextBody>
-                        <Image source={require('../assets/img/pngwave.png')} style={styles.now} />
-                    </View>
-                <View style={styles.column3_Item}>
-                    <TextBody>18</TextBody>
-                        <Image source={require('../assets/img/overcast.png')} style={styles.now} />
-                    </View>
-                <View style={styles.column3_Item}>
-                    <TextBody>19</TextBody>
-                        <Image source={require('../assets/img/overcast.png')} style={styles.now} />
-                    </View>
-                <View style={styles.column3_Item}>
-                    <TextBody>20</TextBody>
-                        <Image source={require('../assets/img/overcast.png')} style={styles.now} />
-                    </View>
-                <View style={styles.column3_Item}>
-                    <TextBody>21</TextBody>
-                        <Image source={require('../assets/img/overcast.png')} style={styles.now} />
-                    </View>
-            </View>
-
-            <View style={styles.column4}>
-                <Image source={require('../assets/img/navigation.png')} style={styles.points} />
-                <Image source={require('../assets/img/point.png')} style={styles.points} />
-                <Image source={require('../assets/img/point.png')} style={styles.points} />
-            </View>
-
+            
         </View>
     );
 }

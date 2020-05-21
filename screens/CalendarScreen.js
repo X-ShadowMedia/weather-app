@@ -1,19 +1,12 @@
 import React from 'react';
 import {View, Button, StyleSheet} from 'react-native';
 import TextBody from '../components/TextBody';
-import HeaderCalendarScreen from './HeaderCalendarScreen';
 
 
 const CalendarScreen = props => {
     return (
         <View style={styles.screen}>
             <View style={styles.body}>
-                <View style={styles.header}><HeaderCalendarScreen onPressAdd={() => {
-                    props.navigation.navigate({routeName: 'AddEventScreen'}) 
-                }} onPressBack={() => {
-                props.navigation.goBack();
-                }}/>
-                </View>
                 <TextBody>Calendar Screen</TextBody>
             </View>
         </View>

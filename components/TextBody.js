@@ -5,7 +5,6 @@ const TextBody = props => <Text style={{...styles.body, ...props.style}}>{props.
 
 const styles = StyleSheet.create({
     body: {
-        fontFamily: 'avenirBook',
         fontSize: 15,
         color: 'white',
         justifyContent: 'flex-start',

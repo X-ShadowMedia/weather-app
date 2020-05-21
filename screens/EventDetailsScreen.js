@@ -2,18 +2,11 @@ import React from 'react';
 import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import TextBody from '../components/TextBody';
 import { Ionicons } from '@expo/vector-icons';
-import HeaderEventDetailsScreen from './HeaderEventDetailsScreen';
 
 const EventDetailsScreen = props => {
     return (
         <View style={styles.screen}>
             <View style={styles.body}>
-                <View style={styles.header}><HeaderEventDetailsScreen onPressEdit={() => {
-                    props.navigation.navigate({routeName: 'EditEvent'}) 
-                }} onPressBack={() => {
-                props.navigation.goBack();
-                }}/>
-                </View>
                 <TextBody>Event Details Screen</TextBody>
             </View>
         </View>

@@ -1,29 +1,28 @@
 import React from 'react';
-import {View, StyleSheet, Button, TouchableOpacity, Text} from 'react-native';
+import {View, StyleSheet, Button, TouchableOpacity, Text, TouchableNativeFeedback} from 'react-native';
 import EventsBlock from '../components/EventsBlock';
 import TempBlock from '../components/TempBlock';
-import Header from '../components/Header';
 import TextBody from '../components/TextBody';
 import Title from '../components/Title';
+import { API_KEY } from '../data/API_KEY';
+import { Ionicons } from '@expo/vector-icons';
 
 const Main = props => {
     return(
       <View style={styles.screen}>
         <View style={styles.body}>
 
-          <View style={styles.header}><Header onPressCalendar={() => {
-            props.navigation.navigate({routeName: 'Calendar'}) 
-          }}/></View>
+          <EventsBlock title="TODAY'S EVENTS" onPressTitle={() => {
+            props.navigation.navigate({routeName: 'TodayEvents'})
+          }} onPressItemFinal={() => {
+            props.navigation.navigate({routeName: 'EventDetails'})
+          }} />
+          <EventsBlock title="NEXT EVENTS" onPressTitle={() => {
+            props.navigation.navigate({routeName: 'NextEvents'})
+          }} onPressItemFinal={() => {
+            props.navigation.navigate({routeName: 'EventDetails'})
+          }}/>
 
-          <TextBody>Main Page</TextBody>
-
-          <View  style={styles.button}><Button title="Go to Event Detail" onPress={() => {
-            props.navigation.navigate({routeName: 'EventDetails'});
-          }}/></View>
-
-          <View  style={styles.button}><Button title="Go to Next Events" onPress={() => {
-            props.navigation.navigate({routeName: 'NextEvents'});
-          }}/></View>
         </View>
       </View>
     );
@@ -52,5 +51,7 @@ const styles = StyleSheet.create({
       padding: 10,
     }
 });
+
+
 
 export default Main;
