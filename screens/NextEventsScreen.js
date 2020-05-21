@@ -1,10 +1,8 @@
 import React from "react";
-import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
 import TextBody from '../components/TextBody';
-import Title from '../components/Title';
-import EventsBlock from '../components/EventsBlock';
 
-const ScreenNextEvents = props => {
+const NextEventsScreen = ({ props }) => {
   return (
     <View style={styles.screen}>
       <View style={styles.body}>
@@ -38,4 +36,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default ScreenNextEvents;
+export default NextEventsScreen;

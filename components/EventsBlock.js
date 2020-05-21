@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, StyleSheet, FlatList, TouchableNativeFeedback } from 'react-native';
+import { View, StyleSheet, FlatList } from 'react-native';
+import Touchable from 'react-native-platform-touchable';
 import { EVENTS } from '../data/DummyDataEvents';
 import EventItem from '../components/EventItem';
 import Title from '../components/Title';
@@ -18,11 +19,11 @@ const EventsBlock = props => {
     return (
         <View style={styles.body}>
                 
-                <TouchableNativeFeedback onPress={props.onPressTitle}>
+                <Touchable onPress={props.onPressTitle}>
                 <View>
                     <Title>{props.title}</Title>
                     </View>
-                </TouchableNativeFeedback>
+                </Touchable>
                 
             
             <FlatList  keyExtractor={(item, index) => item.id} data={EVENTS} renderItem={renderEvent} />

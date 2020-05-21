@@ -3,6 +3,7 @@ import { AppLoading } from "expo";
 import { useFonts } from "@use-expo/font";
 import WeatherNavigation from "./Navigation/WeatherNavigation";
 import { NavigationContainer } from "@react-navigation/native";
+import "react-native-gesture-handler";
 
 export default function App() {
   const [fontsLoaded] = useFonts({

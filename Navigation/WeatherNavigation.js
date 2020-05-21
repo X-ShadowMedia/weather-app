@@ -5,7 +5,7 @@ import AddEventScreen from "../screens/AddEventScreen";
 import CalendarScreen from "../screens/CalendarScreen";
 import EditEventScreen from "../screens/EditEventScreen";
 import EventDetailsScreen from "../screens/EventDetailsScreen";
-import NextEventsScreen from "../screens/ScreenNextEvents";
+import NextEventsScreen from "../screens/NextEventsScreen";
 import TodayEventsScreen from "../screens/TodayEventsScreen";
 
 const defaultStackNavOptions = {

@@ -1,18 +1,19 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableNativeFeedback } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+import Touchable from 'react-native-platform-touchable';
 
 const EventItem = props => {
     
     return(
         <View style={styles.master}>
-            <TouchableNativeFeedback onPress={props.onPressItem}>
+            <Touchable onPress={props.onPressItem}>
                 <View style={styles.eventBody}>
                     <View style={styles.eventContainer}>
                         <Text style={styles.eventText}>{props.time}</Text>
                         <Text style={styles.eventText}>{props.description}</Text>
                     </View>
                 </View>
-            </TouchableNativeFeedback>
+            </Touchable>
         </View>
 
     );

@@ -1,13 +1,11 @@
 import React from 'react';
-import {View, StyleSheet, Button, TouchableOpacity, Text, TouchableNativeFeedback} from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import EventsBlock from '../components/EventsBlock';
-import TempBlock from '../components/TempBlock';
-import TextBody from '../components/TextBody';
-import Title from '../components/Title';
-import { API_KEY } from '../data/API_KEY';
-import { Ionicons } from '@expo/vector-icons';
 
-const Main = props => {
+
+const Main = ({ props }) => {
+  
+
     return(
       <View style={styles.screen}>
         <View style={styles.body}>
@@ -22,9 +20,19 @@ const Main = props => {
           }} onPressItemFinal={() => {
             props.navigation.navigate({routeName: 'EventDetails'})
           }}/>
-
+           
+            
+           
         </View>
+        {/* <Icon 
+            reverse 
+            name='keyboard_arrow_down'
+            type='material'
+            onPress={goToScreenNextEvents}>
+
+            </Icon> */}
       </View>
+      
     );
 };
 
