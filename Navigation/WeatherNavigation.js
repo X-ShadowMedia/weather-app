@@ -1,24 +1,22 @@
-import { createStackNavigator, HeaderTitle } from 'react-navigation-stack';
-import React from 'react';
-import MainScreen from '../screens/Main';
-import CalendarScreen from '../screens/CalendarScreen';
-import EventDetailsScreen from '../screens/EventDetailsScreen';
-import NextEventsScreen from '../screens/ScreenNextEvents';
-import AddEventScreen from '../screens/AddEventScreen';
-import EditEventScreen from '../screens/EditEventScreen';
-import TodayEventsScreen from '../screens/TodayEventsScreen'; 
-import {Ionicons} from '@expo/vector-icons';
-
-import { createAppContainer } from 'react-navigation';
-import { TouchableNativeFeedback } from 'react-native-gesture-handler';
+import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
+import Main from "../screens/Main";
+import AddEventScreen from "../screens/AddEventScreen";
+import CalendarScreen from "../screens/CalendarScreen";
+import EditEventScreen from "../screens/EditEventScreen";
+import EventDetailsScreen from "../screens/EventDetailsScreen";
+import NextEventsScreen from "../screens/ScreenNextEvents";
+import TodayEventsScreen from "../screens/TodayEventsScreen";
 
 const defaultStackNavOptions = {
-    headerStyle: {
-        backgroundColor: '#1665c1'
-    }
+  headerStyle: {
+    backgroundColor: "#1665c1",
+  },
 };
 
-const WeatherNavigator = createStackNavigator({
+const Stack = createStackNavigator();
+
+/*{
     Main: { 
         screen: MainScreen,
         navigationOptions: {
@@ -33,6 +31,20 @@ const WeatherNavigator = createStackNavigator({
     TodayEvents: TodayEventsScreen
 }, {
     defaultNavigationOptions: defaultStackNavOptions
-});
+}); */
 
-export default createAppContainer(WeatherNavigator);
+const WeatherNavigation = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Main" component={Main} />
+      <Stack.Screen name="Calendar" component={CalendarScreen} />
+      <Stack.Screen name="EventDetails" component={EventDetailsScreen} />
+      <Stack.Screen name="NextEvents" component={NextEventsScreen} />
+      <Stack.Screen name="AddEventScreen" component={AddEventScreen} />
+      <Stack.Screen name="EditEvent" component={EditEventScreen} />
+      <Stack.Screen name="TodayEvents" component={TodayEventsScreen} />
+    </Stack.Navigator>
+  );
+};
+
+export default WeatherNavigation;
