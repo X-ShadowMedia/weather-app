@@ -1,15 +1,20 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Button, TouchableHighlight, } from 'react-native';
 import EventsBlock from '../components/EventsBlock';
 
 
 const Main = ({ props }) => {
-  
+  /* const goToScreenNextEvents = () => {
+    navigation.navigate("NextEvents");
+  };
+
+  const goToScreenTodayEvents = () => {
+    navigation.navigate("TodayEvents");
+  }; */
 
     return(
       <View style={styles.screen}>
         <View style={styles.body}>
-
           <EventsBlock title="TODAY'S EVENTS" onPressTitle={() => {
             props.navigation.navigate({routeName: 'TodayEvents'})
           }} onPressItemFinal={() => {
@@ -19,20 +24,9 @@ const Main = ({ props }) => {
             props.navigation.navigate({routeName: 'NextEvents'})
           }} onPressItemFinal={() => {
             props.navigation.navigate({routeName: 'EventDetails'})
-          }}/>
-           
-            
-           
-        </View>
-        {/* <Icon 
-            reverse 
-            name='keyboard_arrow_down'
-            type='material'
-            onPress={goToScreenNextEvents}>
-
-            </Icon> */}
-      </View>
-      
+          }}/>   
+        </View>   
+      </View>      
     );
 };
 

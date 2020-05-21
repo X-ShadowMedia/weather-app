@@ -1,16 +1,14 @@
 import React from "react";
 import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
 import TextBody from '../components/TextBody';
-import Title from '../components/Title';
-import EventsBlock from '../components/EventsBlock';
 import Header from '../components/Header';
 
-const TodayEventsScreen = props => {
+const TodayEventsScreen = (props) => {
   return (
     <View style={styles.screen}>
       <View style={styles.body}>
         <View style={styles.header}><Header onPressCalendar={() => {
-              props.navigation.navigate({routeName: 'Calendar'}) 
+              props.navigation.navigate("Calendar") 
             }} onPressBack={() => {
               props.navigation.goBack();
             }}/></View>
