@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Touchable from 'react-native-platform-touchable';
 
-const EventItem = props => {
+const EventItem = (props) => {
     
     return(
         <View style={styles.master}>
