@@ -1,16 +1,17 @@
 import React from 'react';
-import { StyleSheet, View, Button, TouchableHighlight, } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import EventsBlock from '../components/EventsBlock';
+import TempBlock from '../components/TempBlock';
 
 
 const Main = ({ props }) => {
-  /* const goToScreenNextEvents = () => {
+   /* const goToScreenNextEvents = () => {
     navigation.navigate("NextEvents");
   };
 
   const goToScreenTodayEvents = () => {
     navigation.navigate("TodayEvents");
-  }; */
+  };  */
 
     return(
       <View style={styles.screen}>
@@ -25,8 +26,10 @@ const Main = ({ props }) => {
           }} onPressItemFinal={() => {
             props.navigation.navigate({routeName: 'EventDetails'})
           }}/>   
+          <TempBlock />  
         </View>   
-      </View>      
+      </View>  
+        
     );
 };
 

@@ -36,7 +36,7 @@ const Stack = createStackNavigator();
 const WeatherNavigation = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Main" component={Main} />
+      <Stack.Screen name="Main" component={Main} options={{title: 'Home Screen'}} />
       <Stack.Screen name="Calendar" component={CalendarScreen} />
       <Stack.Screen name="EventDetails" component={EventDetailsScreen} />
       <Stack.Screen name="NextEvents" component={NextEventsScreen} />

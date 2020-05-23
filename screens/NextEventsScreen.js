@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import TextBody from '../components/TextBody';
 
-const NextEventsScreen = ({  }) => {
+const NextEventsScreen = ({ props }) => {
   return (
     <View style={styles.screen}>
       <View style={styles.body}>

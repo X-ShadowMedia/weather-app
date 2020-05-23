@@ -14,7 +14,9 @@ export default function App() {
   if (!fontsLoaded) {
     return <AppLoading />;
   }
-  return <NavigationContainer>
-    <WeatherNavigation />
-  </NavigationContainer>;
+  return (
+          <NavigationContainer>
+            <WeatherNavigation />
+         </NavigationContainer>
+  );
 }
