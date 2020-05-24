@@ -1,9 +1,25 @@
 import React from 'react';
-import {View, Button, StyleSheet} from 'react-native';
+import {View, Button, StyleSheet, TouchableWithoutFeedback} from 'react-native';
 import TextBody from '../components/TextBody';
+import { Ionicons } from '@expo/vector-icons';
 
 
-const CalendarScreen = props => {
+const CalendarScreen = ({navigation}) => {
+    React.useLayoutEffect(() => {
+        navigation.setOptions({
+          headerRight: () => (
+            <TouchableWithoutFeedback>
+              <Ionicons name="md-add" size={30} style={{marginRight: 10}} onPress={() => navigation.navigate('AddEventScreen')} color="white" />
+            </TouchableWithoutFeedback>
+        ),
+        headerLeft: () => (
+            <TouchableWithoutFeedback>
+              <Ionicons name="md-arrow-back" size={30} style={{marginLeft: 10}}  onPress={() => navigation.goBack()} color="white" />
+            </TouchableWithoutFeedback>
+        )
+        })
+    });
+
     return (
         <View style={styles.screen}>
             <View style={styles.body}>

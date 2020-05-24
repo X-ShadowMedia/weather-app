@@ -1,10 +1,11 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text, TouchableWithoutFeedback } from 'react-native';
 import EventsBlock from '../components/EventsBlock';
 import TempBlock from '../components/TempBlock';
+import { Ionicons } from '@expo/vector-icons';
 
 
-const Main = ({ props }) => {
+const Main = ({navigation}) => {
    /* const goToScreenNextEvents = () => {
     navigation.navigate("NextEvents");
   };
@@ -12,26 +13,39 @@ const Main = ({ props }) => {
   const goToScreenTodayEvents = () => {
     navigation.navigate("TodayEvents");
   };  */
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <TouchableWithoutFeedback>
+          <Ionicons name="md-calendar" size={30} style={{marginRight: 10}} onPress={() => navigation.navigate('Calendar')} color="white" />
+        </TouchableWithoutFeedback>
+      ) 
+    })
+  })
 
     return(
       <View style={styles.screen}>
         <View style={styles.body}>
           <EventsBlock title="TODAY'S EVENTS" onPressTitle={() => {
-            props.navigation.navigate({routeName: 'TodayEvents'})
+            navigation.navigate('TodayEvents')
           }} onPressItemFinal={() => {
-            props.navigation.navigate({routeName: 'EventDetails'})
+            navigation.navigate('EventDetails')
           }} />
           <EventsBlock title="NEXT EVENTS" onPressTitle={() => {
-            props.navigation.navigate({routeName: 'NextEvents'})
+            navigation.navigate('NextEvents')
           }} onPressItemFinal={() => {
-            props.navigation.navigate({routeName: 'EventDetails'})
+            navigation.navigate('EventDetails')
           }}/>   
-          <TempBlock />  
+          <TempBlock />
+          <View>
+            <TempBlock />
+          </View>  
         </View>   
       </View>  
-        
     );
 };
+
+
 
 const styles = StyleSheet.create({
     body: {

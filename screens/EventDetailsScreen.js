@@ -1,9 +1,24 @@
 import React from 'react';
-import {View, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, TouchableWithoutFeedback} from 'react-native';
 import TextBody from '../components/TextBody';
 import { Ionicons } from '@expo/vector-icons';
 
-const EventDetailsScreen = props => {
+const EventDetailsScreen = ({navigation}) => {
+    React.useLayoutEffect(() => {
+        navigation.setOptions({
+          headerRight: () => (
+            <TouchableWithoutFeedback>
+              <Ionicons name="md-create" size={30} style={{marginRight: 10}} onPress={() => navigation.navigate('EditEvent')} color="white" />
+            </TouchableWithoutFeedback>
+        ),
+        headerLeft: () => (
+            <TouchableWithoutFeedback>
+              <Ionicons name="md-arrow-back" size={30} style={{marginLeft: 10}}  onPress={() => navigation.goBack()} color="white" />
+            </TouchableWithoutFeedback>
+        )
+        })
+    });
+
     return (
         <View style={styles.screen}>
             <View style={styles.body}>

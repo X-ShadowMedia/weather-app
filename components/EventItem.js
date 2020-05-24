@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import TextBody from '../components/TextBody';
 import Touchable from 'react-native-platform-touchable';
 
 const EventItem = (props) => {
@@ -9,8 +10,8 @@ const EventItem = (props) => {
             <Touchable onPress={props.onPressItem}>
                 <View style={styles.eventBody}>
                     <View style={styles.eventContainer}>
-                        <Text style={styles.eventText}>{props.time}</Text>
-                        <Text style={styles.eventText}>{props.description}</Text>
+                        <TextBody style={styles.eventText}>{props.time}</TextBody>
+                        <TextBody style={styles.eventText}>{props.description}</TextBody>
                     </View>
                 </View>
             </Touchable>
@@ -22,7 +23,7 @@ const EventItem = (props) => {
 const styles = StyleSheet.create({
     master: {
         borderBottomColor: 'white',
-        borderBottomWidth: 0.5,
+        borderBottomWidth: 0.2,
         paddingBottom: '2%'
     },
     eventBody: {

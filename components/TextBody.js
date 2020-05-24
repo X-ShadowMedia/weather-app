@@ -5,10 +5,11 @@ const TextBody = props => <Text style={{...styles.body, ...props.style}}>{props.
 
 const styles = StyleSheet.create({
     body: {
-        fontSize: 15,
+        fontFamily: 'avenirBook',
+        fontSize: 16,
         color: 'white',
         justifyContent: 'flex-start',
-        padding: 10
+        padding: 0
     }
 });
 

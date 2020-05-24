@@ -7,10 +7,14 @@ import EditEventScreen from "../screens/EditEventScreen";
 import EventDetailsScreen from "../screens/EventDetailsScreen";
 import NextEventsScreen from "../screens/NextEventsScreen";
 import TodayEventsScreen from "../screens/TodayEventsScreen";
+import Button from 'react-native';
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import { Ionicons } from '@expo/vector-icons';
+import { NavigationEvents } from "react-navigation";
 
 const defaultStackNavOptions = {
   headerStyle: {
-    backgroundColor: "#1665c1",
+    backgroundColor: "",
   },
 };
 
@@ -36,13 +40,109 @@ const Stack = createStackNavigator();
 const WeatherNavigation = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Main" component={Main} options={{title: 'Home Screen'}} />
-      <Stack.Screen name="Calendar" component={CalendarScreen} />
-      <Stack.Screen name="EventDetails" component={EventDetailsScreen} />
-      <Stack.Screen name="NextEvents" component={NextEventsScreen} />
-      <Stack.Screen name="AddEventScreen" component={AddEventScreen} />
-      <Stack.Screen name="EditEvent" component={EditEventScreen} />
-      <Stack.Screen name="TodayEvents" component={TodayEventsScreen} />
+      <Stack.Screen name="Main" component={Main} options={
+        {
+            headerTitle: 'Weather',
+            headerStyle: {
+                height: 80,
+                backgroundColor: "#1665c1"
+            },
+            headerTitleStyle: {
+                color: 'white',
+                fontFamily: 'avenirBook'
+            },
+            headerTitleAlign: 'center'
+        }
+    } />
+      <Stack.Screen name="Calendar" component={CalendarScreen} options={
+          {
+            title: 'Calendar', 
+            headerStyle: {
+                height: 80,
+                backgroundColor: "#1665c1"
+            },
+            headerTitleStyle: {
+                color: 'white',
+                fontFamily: 'avenirBook'
+            },
+            headerTitleAlign: 'center'
+            }
+        } />
+      <Stack.Screen name="EventDetails" component={EventDetailsScreen} options={
+          {
+            title: 'Event Info', 
+            headerStyle: {
+                height: 80,
+                backgroundColor: "#1665c1"
+            },
+            headerTitleStyle: {
+                color: 'white',
+                fontFamily: 'avenirBook'
+            },
+            headerTitleAlign: 'center'
+            }
+        } />
+
+      <Stack.Screen name="NextEvents" component={NextEventsScreen} options={
+          {
+            title: 'Next Events', 
+            headerStyle: {
+                height: 80,
+                backgroundColor: "#1665c1"
+            },
+            headerTitleStyle: {
+                color: 'white',
+                fontFamily: 'avenirBook'
+            },
+            headerTitleAlign: 'center'
+            }
+        }/>
+
+      <Stack.Screen name="AddEventScreen" component={AddEventScreen} options={
+          {
+            title: 'Add Event', 
+            headerStyle: {
+                height: 80,
+                backgroundColor: "#1665c1"
+            },
+            headerTitleStyle: {
+                color: 'white',
+                fontFamily: 'avenirBook'
+            },
+            headerTitleAlign: 'center'
+            }
+        }/>
+
+      <Stack.Screen name="EditEvent" component={EditEventScreen} options={
+          {
+            title: 'Edit Event', 
+            headerStyle: {
+                height: 80,
+                backgroundColor: "#1665c1"
+            },
+            headerTitleStyle: {
+                color: 'white',
+                fontFamily: 'avenirBook'
+            },
+            headerTitleAlign: 'center'
+            }
+        }/>
+
+      <Stack.Screen name="TodayEvents" component={TodayEventsScreen} options={
+          {
+            title: 'Today\'s Events', 
+            headerStyle: {
+                height: 80,
+                backgroundColor: "#1665c1"
+            },
+            headerTitleStyle: {
+                color: 'white',
+                fontFamily: 'avenirBook'
+            },
+            headerTitleAlign: 'center'
+            }
+        }/>
+
     </Stack.Navigator>
   );
 };

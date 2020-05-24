@@ -6,7 +6,9 @@ import Title from './Title';
 const TempBlock = () => {
     return (
         <View style={styles.body}>
-            
+            <View>
+                <Title>BARCELONA</Title>
+            </View>
         </View>
     );
 }

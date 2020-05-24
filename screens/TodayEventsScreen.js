@@ -1,17 +1,27 @@
-import React from "react";
-import { StyleSheet, View } from "react-native";
+import React from 'react';
+import {View, StyleSheet, TouchableWithoutFeedback} from 'react-native';
 import TextBody from '../components/TextBody';
-import Header from '../components/Header';
+import { Ionicons } from '@expo/vector-icons';
 
-const TodayEventsScreen = (props) => {
+const TodayEventsScreen = ({navigation}) => {
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <TouchableWithoutFeedback>
+          <Ionicons name="md-calendar" size={30} style={{marginRight: 10}} onPress={() => navigation.navigate('Calendar')} color="white" />
+        </TouchableWithoutFeedback>
+    ),
+    headerLeft: () => (
+        <TouchableWithoutFeedback>
+          <Ionicons name="md-arrow-back" size={30} style={{marginLeft: 10}}  onPress={() => navigation.goBack()} color="white" />
+        </TouchableWithoutFeedback>
+    )
+    })
+});
+
   return (
     <View style={styles.screen}>
       <View style={styles.body}>
-        <View style={styles.header}><Header onPressCalendar={() => {
-              props.navigation.navigate("Calendar") 
-            }} onPressBack={() => {
-              props.navigation.goBack();
-            }}/></View>
         <TextBody>Today's Events Screen</TextBody>
       </View>
     </View>
