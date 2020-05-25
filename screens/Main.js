@@ -1,9 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, View, Text, TouchableWithoutFeedback } from 'react-native';
 import EventsBlock from '../components/EventsBlock';
 import TempBlock from '../components/TempBlock';
 import { Ionicons } from '@expo/vector-icons';
-
 
 const Main = ({navigation}) => {
    /* const goToScreenNextEvents = () => {
@@ -13,6 +12,7 @@ const Main = ({navigation}) => {
   const goToScreenTodayEvents = () => {
     navigation.navigate("TodayEvents");
   };  */
+
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (

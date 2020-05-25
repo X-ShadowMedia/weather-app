@@ -1,13 +1,39 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Image } from 'react-native';
 import TextBody from './TextBody';
 import Title from './Title';
+import { TouchableNativeFeedback } from 'react-native-gesture-handler';
+import * as Location from 'expo-location';
 
-const TempBlock = () => {
+const TempBlock = props => {
+
+    const [location, setLocation] = useState(null);
+    const [errorMsg, setErrorMsg] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestPermissionsAsync();
+      if (status !== 'granted') {
+        setErrorMsg('Permission to access location was denied');
+      }
+      let location = await Location.getCurrentPositionAsync({maximumAge: 400});
+      setLocation(location);
+    })();
+  });
+
+  let locationText = 'Waiting..';
+  if (errorMsg) {
+    locationText = errorMsg;
+  } else if (location) {
+    locationText = JSON.stringify(location);
+  }
+
     return (
         <View style={styles.body}>
             <View>
-                <Title>BARCELONA</Title>
+                <TouchableNativeFeedback onPress={props.onPressLocation}>
+                    <TextBody>{locationText}</TextBody>
+                </TouchableNativeFeedback>
             </View>
         </View>
     );
