@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet, Image, ScrollView } from 'react-native';
 import TextBody from './TextBody';
 import Title from './Title';
 import { TouchableNativeFeedback } from 'react-native-gesture-handler';
 import * as Location from 'expo-location';
+import { API_KEY } from '../data/API_KEY';
 
 const TempBlock = props => {
 
     const [location, setLocation] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
+    const [latitude, setLatitude] = useState(null);
+    const [longitude, setlongitude] = useState(null);
+    const [temperature, setTemperature] = useState('0');
+    const [weatherCondition, setWeatherCondition] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
@@ -16,23 +22,47 @@ const TempBlock = props => {
       if (status !== 'granted') {
         setErrorMsg('Permission to access location was denied');
       }
-      let location = await Location.getCurrentPositionAsync({maximumAge: 400});
+      let location = await Location.getCurrentPositionAsync();
       setLocation(location);
-    })();
-  });
 
-  let locationText = 'Waiting..';
+      let latitude = location.coords.latitude;
+      let longitude = location.coords.longitude;
+      setLatitude(latitude);
+      setlongitude(longitude);
+      
+      fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${{ latitude }}&lon=${{ longitude }}&APPID=a934bb6a3b87e7ac54ed10969b14d80b&units=metric`)
+        .then(res => res.json())
+        .then(json => {
+            console.log(json);
+            /*let temperature = json.main.temp;
+            setTemperature(temperature);
+
+            weatherCondition = json.weather[0].main;
+            setWeatherCondition(weatherCondition);
+
+            isLoading = false;
+            setIsLoading(isLoading); */
+            }
+        )
+    })();
+  }, []);
+
+  let text = 'Waiting..';
+  //let weatherConditionText = 'Undefined';
+
   if (errorMsg) {
-    locationText = errorMsg;
+    text = errorMsg;
   } else if (location) {
-    locationText = JSON.stringify(location);
+    text = JSON.stringify(location.coords.longitude);
+    //weatherConditionText = JSON.stringify(weatherCondition);
   }
 
     return (
         <View style={styles.body}>
             <View>
                 <TouchableNativeFeedback onPress={props.onPressLocation}>
-                    <TextBody>{locationText}</TextBody>
+                    <TextBody>{text}</TextBody>
+                    
                 </TouchableNativeFeedback>
             </View>
         </View>
@@ -95,3 +125,21 @@ const styles = StyleSheet.create({
 });
 
 export default TempBlock;
+
+
+/*
+{
+    "timestamp": 1590427212079,
+    "mocked": false,
+    "coords": {
+        "altitude": 346.600006,
+        "heading": 18.273912429809,
+        "longitude": 2.0256252,
+        "speed": 0.4863901436328888,
+        "latitude": 41.5650841,
+        "accuracy": 14.270000457763672
+    } 
+}
+
+
+*/
