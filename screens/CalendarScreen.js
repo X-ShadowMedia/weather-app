@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Button, StyleSheet, TouchableWithoutFeedback} from 'react-native';
 import TextBody from '../components/TextBody';
 import { Ionicons } from '@expo/vector-icons';
+import { Calendar, CalendarList } from 'react-native-calendars';
 
 
 const CalendarScreen = ({navigation}) => {
@@ -20,11 +21,22 @@ const CalendarScreen = ({navigation}) => {
         })
     });
 
+    const vacation = {};
+    const work = {};
+    const social = {};
+    const evento = {};
+    const recordatorio = {};
+
     return (
         <View style={styles.screen}>
-            <View style={styles.body}>
-                <TextBody>Calendar Screen</TextBody>
+            <View style= {styles.calendar}>
+                <CalendarList/>
             </View>
+
+
+            {/* <View style={styles.body}>
+                <TextBody>Calendar Screen</TextBody>
+            </View> */}
         </View>
     );
 }
@@ -47,6 +59,9 @@ const styles = StyleSheet.create({
         width: '100%',
         padding: 10,
         marginBottom: 30
+    },
+    calendar: {
+        backgroundColor: '#8EC9FF'
     }
 });
 
