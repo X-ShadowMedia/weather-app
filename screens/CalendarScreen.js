@@ -21,22 +21,26 @@ const CalendarScreen = ({navigation}) => {
         })
     });
 
-    const vacation = {};
-    const work = {};
-    const social = {};
-    const evento = {};
-    const recordatorio = {};
+    const vacation = {key:'vacation', color: 'yellow'};
+    const work = {key:'work', color: 'green'};
+    const social = {key:'social', color: 'purple'};
+    const evento = {key:'evento', color: 'red'};
+    const recordatorio = {key:'recordatorio', color: 'blue'};
 
     return (
         <View style={styles.screen}>
             <View style= {styles.calendar}>
-                <CalendarList/>
+                <CalendarList>
+                    theme={{
+                        backgroundColor: '#8ec9ff',
+                        calendarBackground: '8ec9ff   '
+                    }}
+                    markedDates={{
+                        '2019-06-01' : {dots: [vacation], marked: true, selected: true, selectedColor:'grey'}
+                    }}
+                    markingType={'multi-dot'}
+                </CalendarList>
             </View>
-
-
-            {/* <View style={styles.body}>
-                <TextBody>Calendar Screen</TextBody>
-            </View> */}
         </View>
     );
 }
