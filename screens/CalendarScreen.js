@@ -22,26 +22,41 @@ const CalendarScreen = ({navigation}) => {
         })
     });
 
-    const vacation = {key:'vacation', color: 'yellow'};
+    
     const work = {key:'work', color: 'green'};
     const social = {key:'social', color: 'purple'};
     const evento = {key:'evento', color: 'red'};
     const recordatorio = {key:'recordatorio', color: 'blue'};
 
+    const vacation = {key:'vacation', color: 'red', selectedDotColor: 'blue'};
+    const massage = {key:'massage', color: 'blue', selectedDotColor: 'blue'};
+    const workout = {key:'workout', color: 'green'};
+
     return (
         <View style={styles.screen}>
             <View style= {styles.calendar}>
-                <CalendarList onDayPress ={(day) => navigation.navigate('AddEventScreen')}>
-                    
-                    theme={{
-                        backgroundColor: '#8ec9ff',
-                        calendarBackground: '8ec9ff   '
-                    }}
-                    markedDates={{
-                        '2019-06-01' : {dots: [vacation], marked: true, selected: true, selectedColor:'grey'}
-                    }}
-                    markingType={'multi-dot'}
-                </CalendarList>
+            <CalendarList
+                // Max amount of months allowed to scroll to the past. Default = 50
+                pastScrollRange={50}
+                // Max amount of months allowed to scroll to the future. Default = 50
+                futureScrollRange={50}
+                style={{
+                    borderWidth: 1,
+                    borderColor: 'gray',
+                    height: 350
+                  }}
+                  theme={{
+                    backgroundColor: '#fff',
+                    calendarBackground: '#fff',
+                    selectedDayBackgroundColor: '#00adf5'
+                  }}
+                  onDayPress={(day) => navigation.navigate('AddEventScreen')}
+                  markedDates={{
+                    '2020-6-25': {dots: [vacation, massage, workout], selected: true, selectedColor: 'red'},
+                    '2020-6-26': {dots: [massage, workout], disabled: true}
+                  }}
+                  markingType={'multi-dot'}
+            />
             </View>
         </View>
     );
