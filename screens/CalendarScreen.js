@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Button, StyleSheet, TouchableWithoutFeedback} from 'react-native';
+import RNCalendarEvents from 'react-native-calendar-events';
 import TextBody from '../components/TextBody';
 import { Ionicons } from '@expo/vector-icons';
 import { Calendar, CalendarList } from 'react-native-calendars';
@@ -30,7 +31,7 @@ const CalendarScreen = ({navigation}) => {
     return (
         <View style={styles.screen}>
             <View style= {styles.calendar}>
-                <CalendarList onDayPress={(day) => navigation.navigate('AddEventScreen')}>
+                <CalendarList onDayPress ={(day) => navigation.navigate('AddEventScreen')}>
                     
                     theme={{
                         backgroundColor: '#8ec9ff',
