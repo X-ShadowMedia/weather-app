@@ -30,7 +30,8 @@ const CalendarScreen = ({navigation}) => {
     return (
         <View style={styles.screen}>
             <View style= {styles.calendar}>
-                <CalendarList>
+                <CalendarList onDayPress={(day) => navigation.navigate('AddEventScreen')}>
+                    
                     theme={{
                         backgroundColor: '#8ec9ff',
                         calendarBackground: '8ec9ff   '
