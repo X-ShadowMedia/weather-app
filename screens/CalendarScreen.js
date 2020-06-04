@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Button, StyleSheet, TouchableWithoutFeedback} from 'react-native';
+import RNCalendarEvents from 'react-native-calendar-events';
 import TextBody from '../components/TextBody';
 import { Ionicons } from '@expo/vector-icons';
 import { Calendar, CalendarList } from 'react-native-calendars';
@@ -21,25 +22,54 @@ const CalendarScreen = ({navigation}) => {
         })
     });
 
-    const vacation = {key:'vacation', color: 'yellow'};
+    
     const work = {key:'work', color: 'green'};
     const social = {key:'social', color: 'purple'};
     const evento = {key:'evento', color: 'red'};
     const recordatorio = {key:'recordatorio', color: 'blue'};
 
+    const vacation = {key:'vacation', color: 'red', selectedDotColor: 'blue'};
+    const massage = {key:'massage', color: 'blue', selectedDotColor: 'blue'};
+    const workout = {key:'workout', color: 'green'};
+
     return (
         <View style={styles.screen}>
             <View style= {styles.calendar}>
-                <CalendarList>
-                    theme={{
-                        backgroundColor: '#8ec9ff',
-                        calendarBackground: '8ec9ff   '
-                    }}
-                    markedDates={{
-                        '2019-06-01' : {dots: [vacation], marked: true, selected: true, selectedColor:'grey'}
-                    }}
-                    markingType={'multi-dot'}
-                </CalendarList>
+            <CalendarList
+                // Max amount of months allowed to scroll to the past. Default = 50
+                pastScrollRange={50}
+                // Max amount of months allowed to scroll to the future. Default = 50
+                futureScrollRange={50}
+                style={{
+                    borderWidth: 1,
+                    borderColor: 'gray',
+                    height: 350
+                  }}
+                  theme={{
+                    backgroundColor: '#fff',
+                    calendarBackground: '#fff',
+                    selectedDayBackgroundColor: '#00adf5'
+                  }}
+                  onDayPress={(day) => navigation.navigate('AddEventScreen')}
+                  markingType={'multi-dot'}
+                  markedDates={{
+                    '2020-06-08': {
+                      selected: true,
+                      dots: [
+                        {key: 'vacation', color: 'blue', selectedDotColor: 'red'},
+                        {key: 'evento', color: 'red', selectedDotColor: 'white'}
+                      ]
+                    },
+                    '2020-06-09': {
+                      disabled: true,
+                      dots: [
+                        {key: 'vacation', color: 'green', selectedDotColor: 'red'},
+                        {key: 'evento', color: 'red', selectedDotColor: 'green'}
+                      ]
+                    }
+                  }}
+                  
+            />
             </View>
         </View>
     );

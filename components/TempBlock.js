@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Image, ScrollView, Text } from 'react-native';
 import TextBody from './TextBody';
 import Title from './Title';
-import { TouchableNativeFeedback } from 'react-native-gesture-handler';
 import * as Location from 'expo-location';
 import Touchable from 'react-native-platform-touchable';
 
