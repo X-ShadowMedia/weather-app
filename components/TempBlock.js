@@ -10,6 +10,7 @@ const TempBlock = props => {
 
     const [location, setLocation] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
+    const [geolocation, setGeolocation] = useState(null);
 
   useEffect(() => {
     (async () => {
@@ -17,10 +18,16 @@ const TempBlock = props => {
       if (status !== 'granted') {
         setErrorMsg('Permission to access location was denied');
       }
-      let location = await Location.getCurrentPositionAsync({maximumAge: 400});
+      let location = await Location.getCurrentPositionAsync();
       setLocation(location);
+
+      let geolocation = await Location.reverseGeocodeAsync(location.coords);
+      setGeolocation(geolocation);
     })();
-  });
+  }),[];
+
+  console.log(location);
+  console.log(geolocation);
 
   let locationText = 'Waiting..';
   if (errorMsg) {
@@ -28,8 +35,9 @@ const TempBlock = props => {
   } else if (location) {
     locationText = JSON.stringify(location);
   }
-
   
+
+
 
     return (
         <View style={styles.body}>
