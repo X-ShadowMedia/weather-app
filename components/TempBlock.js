@@ -15,14 +15,14 @@ const TempBlock = props => {
       let { status } = await Location.requestPermissionsAsync();
       if (status !== 'granted') {
         setErrorMsg('Permission to access location was denied');
-      }
+      };
       let location = await Location.getCurrentPositionAsync();
       setLocation(location);
 
       let geolocation = await Location.reverseGeocodeAsync(location.coords);
       setGeolocation(geolocation);
     })();
-  }),[];
+  }), [];
 
   console.log(location);
   console.log(geolocation);
@@ -37,9 +37,9 @@ const TempBlock = props => {
     return (
         <View style={styles.body}>
             <View>
-                <Touchable onPress={props.onPressLocation}>
+                
                 <TextBody>{geolocationText}</TextBody>
-                </Touchable>
+                
             </View>
         </View>
     );

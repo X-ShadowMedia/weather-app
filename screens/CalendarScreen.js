@@ -51,11 +51,24 @@ const CalendarScreen = ({navigation}) => {
                     selectedDayBackgroundColor: '#00adf5'
                   }}
                   onDayPress={(day) => navigation.navigate('AddEventScreen')}
-                  markedDates={{
-                    '2020-6-25': {dots: [vacation, massage, workout], selected: true, selectedColor: 'red'},
-                    '2020-6-26': {dots: [massage, workout], disabled: true}
-                  }}
                   markingType={'multi-dot'}
+                  markedDates={{
+                    '2020-06-08': {
+                      selected: true,
+                      dots: [
+                        {key: 'vacation', color: 'blue', selectedDotColor: 'red'},
+                        {key: 'evento', color: 'red', selectedDotColor: 'white'}
+                      ]
+                    },
+                    '2020-06-09': {
+                      disabled: true,
+                      dots: [
+                        {key: 'vacation', color: 'green', selectedDotColor: 'red'},
+                        {key: 'evento', color: 'red', selectedDotColor: 'green'}
+                      ]
+                    }
+                  }}
+                  
             />
             </View>
         </View>
