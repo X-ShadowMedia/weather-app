@@ -4,7 +4,7 @@ import TextBody from './TextBody';
 import Title from './Title';
 import { TouchableNativeFeedback } from 'react-native-gesture-handler';
 import * as Location from 'expo-location';
-import { API_KEY } from '../data/API_KEY';
+import Touchable from 'react-native-platform-touchable';
 
 const TempBlock = props => {
 
@@ -57,13 +57,14 @@ const TempBlock = props => {
     //weatherConditionText = JSON.stringify(weatherCondition);
   }
 
+  
+
     return (
         <View style={styles.body}>
             <View>
-                <TouchableNativeFeedback onPress={props.onPressLocation}>
-                    <TextBody>{text}</TextBody>
-                    
-                </TouchableNativeFeedback>
+                <Touchable onPress={props.onPressLocation}>
+                    <TextBody>{locationText}</TextBody>
+                </Touchable>
             </View>
         </View>
     );
