@@ -15,6 +15,9 @@ const TempBlock = props => {
     const [weatherCondition, setWeatherCondition] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const[city, setCity] = useState(null);
+    const [weatherIcon, setWeatherIcon] = useState(null);
+    const [iconSource, setIconSource] = useState(null);
+
 
   useEffect(() => {
     (async () => {
@@ -42,6 +45,12 @@ const TempBlock = props => {
             let city = json.name;
             setCity(city);
 
+            let weatherIcon = json.weather[0].icon;
+            setWeatherIcon(weatherIcon);
+
+            let iconSource = 'http://openweathermap.org/img/w/'+weatherIcon+'.png';
+            setIconSource(iconSource);
+
             let isLoading = false;
             setIsLoading(isLoading); 
             }
@@ -51,15 +60,22 @@ const TempBlock = props => {
 
     return (
         <View style={styles.body}>
-            <View>
+            <ScrollView horizontal='true'>
                 <Touchable onPress={props.onPressLocation}>
-                    <View>
-                        <Title>{city}</Title>
-                        <TextBody>{Math.round(temperature)}ºC</TextBody>
-                        <TextBody>{weatherCondition}</TextBody>
+                    <View style={styles.currentWeather}>
+                        <Title>{city.toUpperCase()}</Title>
+                        <View style={styles.weatherCondition}>
+                            <View style={styles.weatherText}>
+                                <TextBody style={styles.degrees}>{Math.round(temperature)}ºC</TextBody>
+                                <TextBody style={styles.condition}>{weatherCondition}</TextBody>
+                            </View>
+                            <View style={styles.weatherIcon}>
+                                <Image source={{uri: iconSource}} style={{width: 120, height: 120, marginTop: -10, marginHorizontal: 10, padding: 0}} />
+                            </View>
+                        </View>
                     </View>
                 </Touchable>
-            </View>
+            </ScrollView>
         </View>
     );
 }
@@ -75,47 +91,24 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 37
     },
-    column2: {
+    weatherCondition: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
+        marginTop: 5
+    },
+    weatherText: {
+        marginHorizontal: 5,
+        marginTop: 10,
         alignItems: 'center'
     },
-    sun: {
-        width: 100,
-        height: 100
-    },
     degrees: {
-        fontSize: 50,
-        marginBottom: -30
+        fontSize: 30
     },
-    sky: {
-        fontSize: 25
-    }, 
-    now: {
-        width: 30,
-        height: 30,
-        marginTop: -10
+    condition: {
+        fontSize: 20
     },
-    column3_Item: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginHorizontal: 3
-    },
-    column3: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-    },
-    column4: {
-        marginTop: 5,
-        marginBottom: -10,
-        flexDirection: 'row',
-        justifyContent: 'space-between'
-    },
-    points: {
-        width: 15,
-        height: 15,
-        marginHorizontal: 5,
-        marginVertical: 5
+    currentWeather: {
+        alignItems: 'center'
     }
 });
 
