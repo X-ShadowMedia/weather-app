@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Image } from 'react-native';
 import TextBody from './TextBody';
-import Title from './Title';
-import { TouchableNativeFeedback } from 'react-native-gesture-handler';
 import * as Location from 'expo-location';
 import Touchable from 'react-native-platform-touchable';
 
@@ -29,21 +27,18 @@ const TempBlock = props => {
   console.log(location);
   console.log(geolocation);
 
-  let locationText = 'Waiting..';
+  let geolocationText = 'Waiting..';
   if (errorMsg) {
-    locationText = errorMsg;
+    geolocationText = errorMsg;
   } else if (location) {
-    locationText = JSON.stringify(location);
+    geolocationText = JSON.stringify(geolocation);
   }
   
-
-
-
     return (
         <View style={styles.body}>
             <View>
                 <Touchable onPress={props.onPressLocation}>
-                    <TextBody>{locationText}</TextBody>
+                <TextBody>{geolocationText}</TextBody>
                 </Touchable>
             </View>
         </View>
