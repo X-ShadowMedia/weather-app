@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Image, ScrollView } from 'react-native';
+import { View, StyleSheet, Image, ScrollView, Text } from 'react-native';
 import TextBody from './TextBody';
 import Title from './Title';
 import { TouchableNativeFeedback } from 'react-native-gesture-handler';
@@ -15,6 +15,7 @@ const TempBlock = props => {
     const [temperature, setTemperature] = useState('0');
     const [weatherCondition, setWeatherCondition] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const[city, setCity] = useState(null);
 
   useEffect(() => {
     (async () => {
@@ -30,40 +31,34 @@ const TempBlock = props => {
       setLatitude(latitude);
       setlongitude(longitude);
       
-      fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${{ latitude }}&lon=${{ longitude }}&APPID=a934bb6a3b87e7ac54ed10969b14d80b&units=metric`)
+      fetch('http://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&APPID=a934bb6a3b87e7ac54ed10969b14d80b&units=metric')
         .then(res => res.json())
         .then(json => {
-            console.log(json);
-            /*let temperature = json.main.temp;
+            let temperature = json.main.temp;
             setTemperature(temperature);
 
-            weatherCondition = json.weather[0].main;
+            let weatherCondition = json.weather[0].main;
             setWeatherCondition(weatherCondition);
 
-            isLoading = false;
-            setIsLoading(isLoading); */
+            let city = json.name;
+            setCity(city);
+
+            let isLoading = false;
+            setIsLoading(isLoading); 
             }
         )
     })();
   }, []);
 
-  let text = 'Waiting..';
-  //let weatherConditionText = 'Undefined';
-
-  if (errorMsg) {
-    text = errorMsg;
-  } else if (location) {
-    text = JSON.stringify(location.coords.longitude);
-    //weatherConditionText = JSON.stringify(weatherCondition);
-  }
-
-  
-
     return (
         <View style={styles.body}>
             <View>
                 <Touchable onPress={props.onPressLocation}>
-                    <TextBody>{locationText}</TextBody>
+                    <View>
+                        <Title>{city}</Title>
+                        <TextBody>{Math.round(temperature)}ºC</TextBody>
+                        <TextBody>{weatherCondition}</TextBody>
+                    </View>
                 </Touchable>
             </View>
         </View>
