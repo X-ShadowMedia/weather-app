@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Image, ScrollView, Text } from 'react-native';
+import { View, StyleSheet, Image, ScrollView, Text, ActivityIndicator } from 'react-native';
 import TextBody from './TextBody';
 import Title from './Title';
 import * as Location from 'expo-location';
@@ -57,6 +57,12 @@ const TempBlock = props => {
         )
     })();
   }, []);
+
+  if(location == null){
+      return(
+        <ActivityIndicator size="small" color="#55f" />
+      );
+  }
 
     return (
         <View style={styles.body}>
