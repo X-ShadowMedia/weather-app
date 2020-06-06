@@ -33,9 +33,10 @@ const TempBlock = props => {
       setLatitude(latitude);
       setlongitude(longitude);
       
-      fetch('http://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&APPID=a934bb6a3b87e7ac54ed10969b14d80b&units=metric')
+      fetch('http://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&exclude=minutely&APPID=a934bb6a3b87e7ac54ed10969b14d80b&units=metric')
         .then(res => res.json())
         .then(json => {
+            console.log(json);
             let temperature = json.main.temp;
             setTemperature(temperature);
 
