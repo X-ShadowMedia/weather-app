@@ -70,7 +70,7 @@ const TempBlock = props => {
                                 <TextBody style={styles.condition}>{weatherCondition}</TextBody>
                             </View>
                             <View style={styles.weatherIcon}>
-                                <Image source={{uri: iconSource}} style={{width: 120, height: 120, marginTop: -10, marginHorizontal: 10, padding: 0}} />
+                                <Image source={{uri: iconSource}} style={{width: 100, height: 100, marginTop: -10, marginHorizontal: 10, padding: 0}} />
                             </View>
                         </View>
                     </View>
