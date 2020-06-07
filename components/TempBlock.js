@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Image, ScrollView, Text } from 'react-native';
+import { View, StyleSheet, Image, ScrollView, Text, ActivityIndicator } from 'react-native';
 import TextBody from './TextBody';
 import Title from './Title';
 import * as Location from 'expo-location';
@@ -18,6 +18,7 @@ const TempBlock = props => {
     const[city, setCity] = useState(null);
     const [weatherIcon, setWeatherIcon] = useState(null);
     const [iconSource, setIconSource] = useState(null);
+    const [hours, setHours] = useState(null);
 
 
   useEffect(() => {
@@ -37,6 +38,7 @@ const TempBlock = props => {
       fetch('http://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&APPID=aa7e1c9c36cb11e04c482580a6a369db&units=metric')
         .then(res => res.json())
         .then(json => {
+            console.log('weather',json);
             let temperature = json.main.temp;
             setTemperature(temperature);
 
@@ -56,8 +58,26 @@ const TempBlock = props => {
             setIsLoading(isLoading); 
             }
         )
+
+        fetch('https://api.openweathermap.org/data/2.5/onecall?lat='+latitude+'&lon='+longitude+'&exclude=daily,minutely&APPID=a934bb6a3b87e7ac54ed10969b14d80b&units=metric')
+        .then(res => res.json())
+        .then(json => {
+            const hours = json.hourly.map(hours => ({
+            hour: hours.dt,
+            temp: hours.temp,
+            weather: hours.weather.main
+        }));
+        setHours(hours);
+        console.log('hours', hours);
+    });
     })();
   }, []);
+
+  if(location == null){
+      return(
+        <ActivityIndicator size="small" color="#55f" />
+      );
+  }
 
     return (
         <View style={styles.body}>
@@ -71,7 +91,7 @@ const TempBlock = props => {
                                 <TextBody style={styles.condition}>{weatherCondition}</TextBody>
                             </View>
                             <View style={styles.weatherIcon}>
-                                <Image source={{uri: iconSource}} style={{width: 120, height: 120, marginTop: -10, marginHorizontal: 10, padding: 0}} />
+                                <Image source={{uri: iconSource}} style={{width: 100, height: 100, marginTop: -10, marginHorizontal: 10, padding: 0}} />
                             </View>
                         </View>
                         <View>
