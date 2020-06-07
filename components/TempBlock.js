@@ -83,7 +83,7 @@ const TempBlock = props => {
     return (
         <View style={styles.body}>
             <View style={styles.currentWeather}>
-                <Title>{city}</Title> 
+                <Title style={{textTransform: 'uppercase'}}>{city}</Title> 
                     <View style={styles.weatherCondition}>
                         <View style={styles.weatherText}>
                             <TextBody style={styles.degrees}>{Math.round(temperature)}ºC</TextBody>
