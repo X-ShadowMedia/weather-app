@@ -110,8 +110,8 @@ const styles = StyleSheet.create({
         height: '30%',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: -13,
-        marginBottom: 15
+        marginTop: -5,
+        marginBottom: 25
     }, 
     title: {
         fontSize: 37

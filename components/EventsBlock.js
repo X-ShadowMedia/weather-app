@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         height: '25%',
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: 20,
+        marginBottom: 10,
         marginTop: 10,
         overflow: 'hidden'
     }
