@@ -64,7 +64,7 @@ const TempBlock = props => {
             const hours = json.hourly.map(hours => ({
             hour: hours.dt,
             temp: hours.temp,
-            weather: hours.weather.main
+            weather: hours.weather[0].main
         }));
         setHours(hours);
         console.log('hours', hours);
