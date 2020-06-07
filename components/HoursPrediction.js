@@ -6,7 +6,7 @@ const HoursPrediction = ({ hour, temp, weather, icon, imageIcon }) => {
         <View>
             <Text style={styles.Hour}>{Math.round(hour)}</Text>
             <Text>{weather}</Text>
-            <Image source={{uri: imageIcon}}  />
+            <Image source={{uri: imageIcon}} style={{width: 50, height: 50}} />
         </View>
     );
 };

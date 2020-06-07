@@ -84,7 +84,7 @@ const TempBlock = props => {
         <View style={styles.body}>
             <ScrollView horizontal='true'>
                     <View style={styles.currentWeather}>
-                        <Title>{city.toUpperCase()}</Title> 
+                        <Title>{city}</Title> 
                         <View style={styles.weatherCondition}>
                             <View style={styles.weatherText}>
                                 <TextBody style={styles.degrees}>{Math.round(temperature)}ºC</TextBody>
