@@ -83,7 +83,7 @@ const TempBlock = props => {
     return (
         <View style={styles.body}>
             <View style={styles.currentWeather}>
-                <Title>{city.toUpperCase()}</Title> 
+                <Title>{city}</Title> 
                     <View style={styles.weatherCondition}>
                         <View style={styles.weatherText}>
                             <TextBody style={styles.degrees}>{Math.round(temperature)}ºC</TextBody>
@@ -107,10 +107,11 @@ const TempBlock = props => {
 const styles = StyleSheet.create({
     body: {
         width: '100%',
-        height: '25%',
+        height: '30%',
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: 30
+        marginTop: -10,
+        marginBottom: 15
     }, 
     title: {
         fontSize: 37

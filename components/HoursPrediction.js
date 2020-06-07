@@ -22,7 +22,7 @@ var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
 console.log(formattedTime);
 
     return(
-        <View>
+        <View style={styles.body}>
             <Text style={styles.Hour}>{hours}</Text>
             <Image source={{uri: imageIcon}} style={{width: 50, height: 50}} />
         </View>
@@ -32,6 +32,13 @@ console.log(formattedTime);
 const styles = StyleSheet.create({
     Hour: {
         marginRight: 10 
+    },
+    body: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: -90,
+        height: 250,
+        marginHorizontal: 10
     }
 });
 
