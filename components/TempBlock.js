@@ -3,6 +3,7 @@ import { View, StyleSheet, Image, ScrollView, FlatList, ActivityIndicator } from
 import TextBody from './TextBody';
 import Title from './Title';
 import * as Location from 'expo-location';
+import HoursPrediction from './HoursPrediction';
 
 const TempBlock = props => {
 
@@ -94,13 +95,13 @@ const TempBlock = props => {
                             </View>
                         </View>
                     </View>
+                    <FlatList
+                    horizontal
+                    data={hours}
+                    renderItem={({ item }) => <HoursPrediction {...item} />}
+                    keyExtractor={(hour) => hours.dt}
+                    /> 
             </ScrollView>
-            <FlatList
-            horizontal
-            data={hours}
-            renderItem={({ item }) => <HoursPrediction {...item} />}
-            keyExtractor={(hour) => hours.dt}
-            />
         </View>
     );
 }
