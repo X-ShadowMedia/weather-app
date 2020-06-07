@@ -7,6 +7,7 @@ import EditEventScreen from "../screens/EditEventScreen";
 import EventDetailsScreen from "../screens/EventDetailsScreen";
 import NextEventsScreen from "../screens/NextEventsScreen";
 import TodayEventsScreen from "../screens/TodayEventsScreen";
+import EventsScreen from "../screens/EventsScreen";
 import Button from 'react-native';
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { Ionicons } from '@expo/vector-icons';
@@ -82,7 +83,20 @@ const WeatherNavigation = () => {
             headerTitleAlign: 'center'
             }
         } />
-
+        <Stack.Screen name="EventsScreen" component={EventsScreen} options={
+          {
+            title: 'Event Info', 
+            headerStyle: {
+                height: 80,
+                backgroundColor: "#1665c1"
+            },
+            headerTitleStyle: {
+                color: 'white',
+                fontFamily: 'avenirBook'
+            },
+            headerTitleAlign: 'center'
+            }
+        } />
       <Stack.Screen name="NextEvents" component={NextEventsScreen} options={
           {
             title: 'Next Events', 
