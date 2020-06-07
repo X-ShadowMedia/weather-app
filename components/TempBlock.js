@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Image, ScrollView, Text, ActivityIndicator } from 'react-native';
+import { View, StyleSheet, Image, ScrollView, FlatList, ActivityIndicator } from 'react-native';
 import TextBody from './TextBody';
 import Title from './Title';
 import * as Location from 'expo-location';
-import Touchable from 'react-native-platform-touchable';
-import Hourly from './Hourly';
 
 const TempBlock = props => {
 
@@ -84,9 +82,8 @@ const TempBlock = props => {
     return (
         <View style={styles.body}>
             <ScrollView horizontal='true'>
-                <View>
                     <View style={styles.currentWeather}>
-                        <Title>{city}</Title> 
+                        <Title>{city.toUpperCase()}</Title> 
                         <View style={styles.weatherCondition}>
                             <View style={styles.weatherText}>
                                 <TextBody style={styles.degrees}>{Math.round(temperature)}ºC</TextBody>
@@ -96,13 +93,14 @@ const TempBlock = props => {
                                 <Image source={{uri: iconSource}} style={{width: 100, height: 100, marginTop: -10, marginHorizontal: 10, padding: 0}} />
                             </View>
                         </View>
-                        <View>
-                            <TextBody>{hours.hour}</TextBody>
-                            <Image source={{uri: imageIcon}} style={{width: 50, height: 50, marginHorizontal: 10}} />
-                        </View>
                     </View>
-                </View>
             </ScrollView>
+            <FlatList
+            horizontal
+            data={hours}
+            renderItem={({ item }) => <HoursPrediction {...item} />}
+            keyExtractor={(hour) => hours.dt}
+            />
         </View>
     );
 }
