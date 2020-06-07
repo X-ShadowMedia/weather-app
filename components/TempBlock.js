@@ -64,7 +64,9 @@ const TempBlock = props => {
             const hours = json.hourly.map(hours => ({
             hour: hours.dt,
             temp: hours.temp,
-            weather: hours.weather[0].main
+            weather: hours.weather[0].main,
+            icon: hours.weather[0].icon,
+            imageIcon: 'http://openweathermap.org/img/w/'+ hours.weather[0].icon +'.png'
         }));
         setHours(hours);
         console.log('hours', hours);
@@ -83,7 +85,7 @@ const TempBlock = props => {
             <ScrollView horizontal='true'>
                 <Touchable onPress={props.onPressLocation}>
                     <View style={styles.currentWeather}>
-                        <Title>{city.toUpperCase()}</Title>
+                        <Title>{city.toUpperCase()}</Title> 
                         <View style={styles.weatherCondition}>
                             <View style={styles.weatherText}>
                                 <TextBody style={styles.degrees}>{Math.round(temperature)}ºC</TextBody>
