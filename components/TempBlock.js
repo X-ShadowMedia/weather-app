@@ -82,26 +82,24 @@ const TempBlock = props => {
 
     return (
         <View style={styles.body}>
-            <ScrollView horizontal='true'>
-                    <View style={styles.currentWeather}>
-                        <Title>{city.toUpperCase()}</Title> 
-                        <View style={styles.weatherCondition}>
-                            <View style={styles.weatherText}>
-                                <TextBody style={styles.degrees}>{Math.round(temperature)}ºC</TextBody>
-                                <TextBody style={styles.condition}>{weatherCondition}</TextBody>
-                            </View>
-                            <View style={styles.weatherIcon}>
-                                <Image source={{uri: iconSource}} style={{width: 100, height: 100, marginTop: -10, marginHorizontal: 10, padding: 0}} />
-                            </View>
+            <View style={styles.currentWeather}>
+                <Title>{city.toUpperCase()}</Title> 
+                    <View style={styles.weatherCondition}>
+                        <View style={styles.weatherText}>
+                            <TextBody style={styles.degrees}>{Math.round(temperature)}ºC</TextBody>
+                            <TextBody style={styles.condition}>{weatherCondition}</TextBody>
+                        </View>
+                        <View style={styles.weatherIcon}>
+                            <Image source={{uri: iconSource}} style={{width: 100, height: 100, marginTop: -10, marginHorizontal: 10, padding: 0}} />
                         </View>
                     </View>
-                    <FlatList
+            </View>
+                <FlatList
                     horizontal
                     data={hours}
                     renderItem={({ item }) => <HoursPrediction {...item} />}
                     keyExtractor={(hour) => hours.dt}
-                    /> 
-            </ScrollView>
+                /> 
         </View>
     );
 }
