@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Image, ScrollView, Text, ActivityIndicator } from 'react-native';
+import TextBody from './TextBody';
 
 const HoursPrediction = ({ hour, temp, weather, icon, imageIcon }) => {
 
@@ -23,7 +24,7 @@ console.log(formattedTime);
 
     return(
         <View style={styles.body}>
-            <Text style={styles.Hour}>{hours}</Text>
+            <TextBody style={styles.Hour}>{hours}</TextBody>
             <Image source={{uri: imageIcon}} style={{width: 50, height: 50}} />
         </View>
     );
