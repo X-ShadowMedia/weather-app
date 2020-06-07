@@ -4,6 +4,7 @@ import TextBody from './TextBody';
 import Title from './Title';
 import * as Location from 'expo-location';
 import Touchable from 'react-native-platform-touchable';
+import Hourly from './Hourly';
 
 const TempBlock = props => {
 
@@ -33,7 +34,7 @@ const TempBlock = props => {
       setLatitude(latitude);
       setlongitude(longitude);
       
-      fetch('http://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&APPID=a934bb6a3b87e7ac54ed10969b14d80b&units=metric')
+      fetch('http://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&APPID=aa7e1c9c36cb11e04c482580a6a369db&units=metric')
         .then(res => res.json())
         .then(json => {
             let temperature = json.main.temp;
@@ -61,9 +62,9 @@ const TempBlock = props => {
     return (
         <View style={styles.body}>
             <ScrollView horizontal='true'>
-                <Touchable onPress={props.onPressLocation}>
+                <View>
                     <View style={styles.currentWeather}>
-                        <Title>{city.toUpperCase()}</Title>
+                        <Title>{city}</Title>
                         <View style={styles.weatherCondition}>
                             <View style={styles.weatherText}>
                                 <TextBody style={styles.degrees}>{Math.round(temperature)}ºC</TextBody>
@@ -73,8 +74,11 @@ const TempBlock = props => {
                                 <Image source={{uri: iconSource}} style={{width: 120, height: 120, marginTop: -10, marginHorizontal: 10, padding: 0}} />
                             </View>
                         </View>
+                        <View>
+                            <Hourly latitude={latitude} longitude={longitude}/>
+                        </View>
                     </View>
-                </Touchable>
+                </View>
             </ScrollView>
         </View>
     );
