@@ -17,6 +17,7 @@ const TempBlock = props => {
     const[city, setCity] = useState(null);
     const [weatherIcon, setWeatherIcon] = useState(null);
     const [iconSource, setIconSource] = useState(null);
+    const [hours, setHours] = useState(null);
 
 
   useEffect(() => {
@@ -33,10 +34,10 @@ const TempBlock = props => {
       setLatitude(latitude);
       setlongitude(longitude);
       
-      fetch('http://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&exclude=minutely&APPID=a934bb6a3b87e7ac54ed10969b14d80b&units=metric')
+      fetch('http://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&APPID=a934bb6a3b87e7ac54ed10969b14d80b&units=metric')
         .then(res => res.json())
         .then(json => {
-            console.log(json);
+            console.log('weather',json);
             let temperature = json.main.temp;
             setTemperature(temperature);
 
@@ -56,6 +57,18 @@ const TempBlock = props => {
             setIsLoading(isLoading); 
             }
         )
+
+        fetch('https://api.openweathermap.org/data/2.5/onecall?lat='+latitude+'&lon='+longitude+'&exclude=daily,minutely&APPID=a934bb6a3b87e7ac54ed10969b14d80b&units=metric')
+        .then(res => res.json())
+        .then(json => {
+            const hours = json.hourly.map(hours => ({
+            hour: hours.dt,
+            temp: hours.temp,
+            weather: hours.weather.main
+        }));
+        setHours(hours);
+        console.log('hours', hours);
+    });
     })();
   }, []);
 
