@@ -24,7 +24,7 @@ console.log(formattedTime);
 
     return(
         <View style={styles.body}>
-            <TextBody style={styles.Hour}>{hours}</TextBody>
+            <TextBody style={styles.Hour}>  {hours}</TextBody>
             <Image source={{uri: imageIcon}} style={{width: 50, height: 50}} />
         </View>
     );
@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
         marginRight: 10 
     },
     body: {
+        width: 50,
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: -90,
