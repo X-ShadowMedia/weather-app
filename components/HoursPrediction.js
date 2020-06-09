@@ -40,7 +40,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: -90,
         height: 250,
-        marginHorizontal: 10
+        marginHorizontal: 10,
+        marginLeft: 30
     }
 });
 

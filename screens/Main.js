@@ -36,10 +36,9 @@ const Main = ({navigation}) => {
           }} onPressItemFinal={() => {
             navigation.navigate('EventDetails')
           }}/>   
+          
           <TempBlock />
-          <View>
-            <TempBlock />
-          </View>  
+           
         </View>   
       </View>  
     );

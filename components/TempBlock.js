@@ -107,10 +107,10 @@ const TempBlock = props => {
 const styles = StyleSheet.create({
     body: {
         width: '100%',
-        height: '30%',
+        height: '50%',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: -5,
+        marginTop: 15,
         marginBottom: 25
     }, 
     title: {
