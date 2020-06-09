@@ -13,6 +13,7 @@ const EventsBlock = props => {
             <EventItem 
                 time={itemData.item.time}
                 description={itemData.item.description}
+                id={itemData.item.id}
                 onPressItem={props.onPressItemFinal}
             />
         );
@@ -23,7 +24,7 @@ const EventsBlock = props => {
     //renderEvent
 
     return (
-        <View style={styles.body}>
+        <View style={styles.eventBlock}>
                 
                 <Touchable onPress={props.onPressTitle}>
                 <View>
@@ -38,7 +39,7 @@ const EventsBlock = props => {
 };
 
 const styles = StyleSheet.create({
-    body: {
+    eventBlock: {
         width: '100%',
         height: '25%',
         justifyContent: 'center',

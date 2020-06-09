@@ -2,8 +2,9 @@ import React from 'react';
 import {View, StyleSheet, TouchableWithoutFeedback} from 'react-native';
 import TextBody from '../components/TextBody';
 import { Ionicons } from '@expo/vector-icons';
+import EventDetailBlock from '../components/EventDetailBlock';
 
-const EventDetailsScreen = ({props, navigation}) => {
+const EventDetailsScreen = ({route, navigation}) => {
     React.useLayoutEffect(() => {
         navigation.setOptions({
           headerRight: () => (
@@ -19,12 +20,13 @@ const EventDetailsScreen = ({props, navigation}) => {
         })
     });
 
-    console.log(props);
+    const { EventId } = route.params;
 
     return (
         <View style={styles.screen}>
             <View style={styles.body}>
                 <TextBody>Event Details Screen</TextBody>
+                <TextBody>Event ID: {JSON.stringify(EventId)}</TextBody>
             </View>
         </View>
     );

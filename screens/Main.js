@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
-import { StyleSheet, View, Text, TouchableWithoutFeedback } from 'react-native';
-import EventsBlock from '../components/EventsBlock';
+import { StyleSheet, View, Text, TouchableWithoutFeedback, FlatList } from 'react-native';
+//import EventsBlock from '../components/EventsBlock';
 import TempBlock from '../components/TempBlock';
 import { Ionicons } from '@expo/vector-icons';
+import EventItem from '../components/EventItem';
+import { EVENTS } from '../data/DummyDataEvents';
+import Title from '../components/Title';
 
-const Main = ({navigation}) => {
+const Main = ({props, navigation}) => {
    /* const goToScreenNextEvents = () => {
     navigation.navigate("NextEvents");
   };
@@ -12,6 +15,8 @@ const Main = ({navigation}) => {
   const goToScreenTodayEvents = () => {
     navigation.navigate("TodayEvents");
   };  */
+
+  
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
@@ -23,22 +28,40 @@ const Main = ({navigation}) => {
     })
   })
 
+  const RenderEvent = (itemData) => {
+    return (
+        <EventItem 
+            time={itemData.item.time}
+            description={itemData.item.description}
+            onPressItem={() => {
+              navigation.navigate('EventDetails', {
+                EventId: itemData.item.id
+              });
+            }}
+        />
+    );
+};
+
     return(
       <View style={styles.screen}>
         <View style={styles.body}>
-          <EventsBlock title="TODAY'S EVENTS" onPressTitle={() => {
-            navigation.navigate('TodayEvents')
-          }} onPressItemFinal={() => {
-            navigation.navigate('EventDetails')
-          }} />
-          <EventsBlock title="NEXT EVENTS" onPressTitle={() => {
-            navigation.navigate('NextEvents')
-          }} onPressItemFinal={() => {
-            navigation.navigate('EventDetails')
-          }}/>   
-          
+          <View style={styles.eventBlock}>
+                  <TouchableWithoutFeedback>
+                      <View>
+                          <Title>TODAY'S EVENTS</Title>
+                      </View>
+                  </TouchableWithoutFeedback>
+              <FlatList  keyExtractor={(item, index) => item.id} data={EVENTS} renderItem={RenderEvent} /> 
+          </View>  
+          <View style={styles.eventBlock}>
+                  <TouchableWithoutFeedback>
+                      <View>
+                          <Title>NEXT EVENTS</Title>
+                      </View>
+                  </TouchableWithoutFeedback>
+              <FlatList  keyExtractor={(item, index) => item.id} data={EVENTS} renderItem={RenderEvent} /> 
+          </View>
           <TempBlock />
-           
         </View>   
       </View>  
     );
@@ -67,7 +90,16 @@ const styles = StyleSheet.create({
     },
     button: {
       padding: 10,
-    }
+    },
+    eventBlock: {
+      width: '100%',
+      height: '25%',
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginBottom: 10,
+      marginTop: 10,
+      overflow: 'hidden'
+  }
 });
 
 
