@@ -8,6 +8,7 @@ import EventDetailsScreen from "../screens/EventDetailsScreen";
 import NextEventsScreen from "../screens/NextEventsScreen";
 import TodayEventsScreen from "../screens/TodayEventsScreen";
 import EventsScreen from "../screens/EventsScreen";
+import PredictionDetails from "../screens/PredictionDetails";
 import Button from 'react-native';
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { Ionicons } from '@expo/vector-icons';
@@ -58,6 +59,20 @@ const WeatherNavigation = () => {
       <Stack.Screen name="Calendar" component={CalendarScreen} options={
           {
             title: 'Calendar', 
+            headerStyle: {
+                height: 80,
+                backgroundColor: "#1665c1"
+            },
+            headerTitleStyle: {
+                color: 'white',
+                fontFamily: 'avenirBook'
+            },
+            headerTitleAlign: 'center'
+            }
+        } />
+        <Stack.Screen name="PredictionDetails" component={PredictionDetails} options={
+          {
+            title: 'PredictionDetails', 
             headerStyle: {
                 height: 80,
                 backgroundColor: "#1665c1"

@@ -4,8 +4,10 @@ import TextBody from './TextBody';
 import Title from './Title';
 import * as Location from 'expo-location';
 import HoursPrediction from './HoursPrediction';
+import TouchableOpacity from 'react-native-platform-touchable';
+import PredictionDetails from '../screens/PredictionDetails';
 
-const TempBlock = props => {
+const TempBlock = ({props, navigation}) => {  
 
     const [location, setLocation] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
@@ -82,6 +84,7 @@ const TempBlock = props => {
 
     return (
         <View style={styles.body}>
+            <TouchableOpacity onPress={() => navigation.navigate('PredictionDetails', {data: json})}>
             <View style={styles.currentWeather}>
                 <Title style={{textTransform: 'uppercase'}}>{city}</Title> 
                     <View style={styles.weatherCondition}>
@@ -94,6 +97,7 @@ const TempBlock = props => {
                         </View>
                     </View>
             </View>
+            </TouchableOpacity>
                 <FlatList
                     horizontal
                     data={hours}
