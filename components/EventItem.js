@@ -4,7 +4,8 @@ import TextBody from '../components/TextBody';
 import Touchable from 'react-native-platform-touchable';
 
 const EventItem = (props) => {
-    
+    // (4) Recibe los props de EventsBlock para sacar toda la info
+
     return(
         <View style={styles.master}>
             <Touchable onPress={props.onPressItem}>
