@@ -3,7 +3,7 @@ import {View, StyleSheet, TouchableWithoutFeedback} from 'react-native';
 import TextBody from '../components/TextBody';
 import { Ionicons } from '@expo/vector-icons';
 
-const EventDetailsScreen = ({navigation}) => {
+const EventDetailsScreen = ({props, navigation}) => {
     React.useLayoutEffect(() => {
         navigation.setOptions({
           headerRight: () => (
@@ -18,6 +18,8 @@ const EventDetailsScreen = ({navigation}) => {
         )
         })
     });
+
+    console.log(props);
 
     return (
         <View style={styles.screen}>
