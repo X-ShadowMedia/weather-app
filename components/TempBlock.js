@@ -84,7 +84,7 @@ const TempBlock = ({props, navigation}) => {
 
     return (
         <View style={styles.body}>
-            <TouchableOpacity onPress={() => navigation.navigate('PredictionDetails', {data: json})}>
+            <TouchableOpacity onPress={() => navigation.navigate('PredictionDetails')}>
             <View style={styles.currentWeather}>
                 <Title style={{textTransform: 'uppercase'}}>{city}</Title> 
                     <View style={styles.weatherCondition}>
