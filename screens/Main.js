@@ -61,7 +61,9 @@ const Main = ({props, navigation}) => {
                   </TouchableWithoutFeedback>
               <FlatList  keyExtractor={(item, index) => item.id} data={EVENTS} renderItem={RenderEvent} /> 
           </View>
-          <TempBlock />
+          <TempBlock onSelectWeather={() => {
+            navigation.navigate('PredictionDetails')
+          }}/>
         </View>   
       </View>  
     );

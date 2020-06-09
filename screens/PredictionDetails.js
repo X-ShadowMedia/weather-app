@@ -9,13 +9,15 @@ const PredictionDetails = ({ data, navigation }) => {
 
     return(
        <View>
-           PredictionDetails
+           <TextBody style={styles.text}>PredictionDetails</TextBody>
        </View>
     );
 };
 
 const styles = StyleSheet.create({
-    
+    text: {
+        color: 'black'
+    }
 });
 
 export default PredictionDetails;

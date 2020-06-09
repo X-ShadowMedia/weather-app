@@ -7,7 +7,7 @@ import HoursPrediction from './HoursPrediction';
 import TouchableOpacity from 'react-native-platform-touchable';
 import PredictionDetails from '../screens/PredictionDetails';
 
-const TempBlock = ({props, navigation}) => {  
+const TempBlock = props => {  
 
     const [location, setLocation] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
@@ -84,7 +84,7 @@ const TempBlock = ({props, navigation}) => {
 
     return (
         <View style={styles.body}>
-            <TouchableOpacity onPress={() => navigation.navigate('PredictionDetails')}>
+            <TouchableOpacity onPress={props.onSelectWeather}>
             <View style={styles.currentWeather}>
                 <Title style={{textTransform: 'uppercase'}}>{city}</Title> 
                     <View style={styles.weatherCondition}>
