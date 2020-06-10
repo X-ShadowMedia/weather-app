@@ -20,6 +20,7 @@ const TempBlock = props => {
     const [weatherIcon, setWeatherIcon] = useState(null);
     const [iconSource, setIconSource] = useState(null);
     const [hours, setHours] = useState(null);
+    const [fetchedData, setFetchedData] = useState(null);
 
 
   useEffect(() => {
@@ -57,8 +58,19 @@ const TempBlock = props => {
 
             let isLoading = false;
             setIsLoading(isLoading); 
-            }
-        )
+            
+
+            /* const fetchedData = json.map(data => ({
+                temp: data.main.temp,
+                weather: data.weather[0].main,
+                city: data.name,
+                iconCode: data.weather[0].icon,
+                iconImage: 'http://openweathermap.org/img/w/'+data.weather[0].icon+'.png'
+            }));
+            setFetchedData(fetchedData);
+            console.log('fetchedData',fetchedData);
+            */
+        }); 
 
         fetch('https://api.openweathermap.org/data/2.5/onecall?lat='+latitude+'&lon='+longitude+'&exclude=daily,minutely&APPID=a934bb6a3b87e7ac54ed10969b14d80b&units=metric')
         .then(res => res.json())
