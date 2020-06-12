@@ -24,7 +24,6 @@ import {
 } from "react-native-gesture-handler";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 
-
 class Main extends Component {
   state = {
     places: "",
@@ -111,6 +110,14 @@ class Main extends Component {
             </View>
           </View>
         </TouchableWithoutFeedback>
+        <Text
+          onPress={() => {
+            this.props.navigation.navigate("AllNotes");
+          }}
+          style={{ fontSize: 20 }}
+        >
+          AllNotes
+        </Text>
         <Modal
           animationType="slide"
           transparent={false}

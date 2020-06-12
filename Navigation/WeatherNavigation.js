@@ -7,6 +7,7 @@ import EditEventScreen from "../screens/EditEventScreen";
 import EventDetailsScreen from "../screens/EventDetailsScreen";
 import NextEventsScreen from "../screens/NextEventsScreen";
 import TodayEventsScreen from "../screens/TodayEventsScreen";
+import AllNotes from "../screens/Allnotes";
 import DummeyScreen from "../screens/Dummey";
 import Button from "react-native";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
@@ -161,6 +162,23 @@ const WeatherNavigation = () => {
       <Stack.Screen
         name="Dum"
         component={DummeyScreen}
+        options={{
+          title: "Practice Screen",
+          headerStyle: {
+            height: 80,
+            backgroundColor: "#1665c1",
+          },
+          headerTitleStyle: {
+            color: "white",
+            fontFamily: "avenirBook",
+          },
+          headerTitleAlign: "center",
+        }}
+      />
+
+      <Stack.Screen
+        name="AllNotes"
+        component={AllNotes}
         options={{
           title: "Practice Screen",
           headerStyle: {
