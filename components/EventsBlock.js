@@ -1,53 +1,124 @@
-import React from 'react';
-import { View, StyleSheet, FlatList } from 'react-native';
-import Touchable from 'react-native-platform-touchable';
-import { EVENTS } from '../data/DummyDataEvents'; //importación del array que contiene los eventos
-import EventItem from '../components/EventItem';
-import Title from '../components/Title';
+import React from "react";
+import { View, StyleSheet, FlatList, Text } from "react-native";
+import Touchable from "react-native-platform-touchable";
+import { EVENTS } from "../data/DummyDataEvents";
+import EventItem from "../components/EventItem";
+import Title from "../components/Title";
+import { connect } from "react-redux";
 
-//(3)
-
-const EventsBlock = props => {
-    const renderEvent = (itemData) => { //itemData es toda la información recogida por el FlatList, donde se pasan los props al EventItem
-        return (
-            <EventItem 
-                time={itemData.item.time}
-                description={itemData.item.description}
-                id={itemData.item.id}
-                onPressItem={props.onPressItemFinal}
-            />
-        );
+class EventsBlock extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0,
     };
-
-
-    //con el keyExtractor se pilla los ids de cada evento en el array iterando por cada uno de ellos, la data={EVENTS} sería el array en si y luego se llama a la función
-    //renderEvent
-
+  }
+  renderEvent = (item) => {
+    // alert("Single item" + JSON.stringify(item));
     return (
-        <View style={styles.eventBlock}>
-                
-                <Touchable onPress={props.onPressTitle}>
-                <View>
-                    <Title>{props.title}</Title>
-                    </View>
-                </Touchable>
-                
-            
-            <FlatList  keyExtractor={(item, index) => item.id} data={EVENTS} renderItem={renderEvent} /> 
-        </View>
+      <EventItem
+        onPressItem={() => {
+          this.props.navigation.navigate("EventDetails", { event: item });
+        }}
+        time={item.time}
+        title={item.title}
+      />
     );
-};
+  };
+
+  getSortedData = () => {
+    let allNotes = this.props.notes;
+    allNotes.sort(function (a, b) {
+      return a.time - b.time;
+    });
+    let currentDate = new Date();
+
+    if (this.props.title == "NEXT EVENTS") {
+      let arrayToReturn = [];
+
+      for (let i = 0; i < allNotes.length; i++) {
+        console.log("Event" + JSON.stringify(allNotes[i]));
+        if (
+          allNotes[i].day.year >= currentDate.getFullYear() &&
+          allNotes[i].day.day > currentDate.getDate() &&
+          allNotes[i].day.month >= currentDate.getMonth() + 1
+        ) {
+          arrayToReturn.push(allNotes[i]);
+        }
+      }
+      // alert("Arr" + JSON.stringify(arrayToReturn));
+
+      // // alert("Arr" + JSON.stringify(arr));
+      // arrayToReturn = allNotes;
+      // this.setState({ count: arrayToReturn.length });
+      return arrayToReturn;
+    } else if (this.props.title == "TODAY'S EVENTS") {
+      let arrayToReturn = [];
+
+      for (let i = 0; i < allNotes.length; i++) {
+        console.log("Event" + JSON.stringify(allNotes[i]));
+        if (
+          allNotes[i].day.year == currentDate.getFullYear() &&
+          allNotes[i].day.day == currentDate.getDate() &&
+          allNotes[i].day.month == currentDate.getMonth() + 1
+        ) {
+          arrayToReturn.push(allNotes[i]);
+        }
+      }
+      // alert("Arr" + JSON.stringify(arrayToReturn));
+
+      // // alert("Arr" + JSON.stringify(arr));
+      // arrayToReturn = allNotes;
+      // this.setState({ count: arrayToReturn.length });
+      return arrayToReturn;
+    }
+  };
+
+  render() {
+    return (
+      <View style={styles.body}>
+        <Touchable onPress={this.props.onPressTitle}>
+          <View>
+            <Title>{this.props.title}</Title>
+          </View>
+        </Touchable>
+
+        {this.getSortedData().length == 0 && (
+          <View>
+            <Text>No events found.</Text>
+          </View>
+        )}
+
+        <FlatList
+          style={{ height: this.getSortedData().length == 0 ? 0 : 100 }}
+          keyExtractor={(item, index) => Math.random() + ""}
+          data={this.getSortedData()}
+          renderItem={({ item }) => this.renderEvent(item)}
+        />
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
-    eventBlock: {
-        width: '100%',
-        height: '25%',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginBottom: 10,
-        marginTop: 10,
-        overflow: 'hidden'
-    }
+  body: {
+    width: "100%",
+    // height: ,
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 10,
+    marginTop: 10,
+    overflow: "hidden",
+  },
 });
 
-export default EventsBlock;
+// Map State To Props (Redux Store Passes State To Component)
+const mapStateToProps = (state) => {
+  console.log("STATE" + state);
+  // Redux Store --> Component
+  return {
+    notes: state.noteReducer.notes,
+  };
+};
+
+export default connect(mapStateToProps)(EventsBlock);

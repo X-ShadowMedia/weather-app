@@ -3,6 +3,9 @@ import { AppLoading } from "expo";
 import { useFonts } from "@use-expo/font";
 import WeatherNavigation from "./Navigation/WeatherNavigation";
 import { NavigationContainer } from "@react-navigation/native";
+import { PersistGate } from "redux-persist/integration/react";
+import { Provider } from "react-redux";
+import { store, persistor } from "./Redux/Store/store";
 import "react-native-gesture-handler";
 
 export default function App() {
@@ -15,8 +18,12 @@ export default function App() {
     return <AppLoading />;
   }
   return (
-          <NavigationContainer>
-            <WeatherNavigation />
-         </NavigationContainer>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <NavigationContainer>
+          <WeatherNavigation />
+        </NavigationContainer>
+      </PersistGate>
+    </Provider>
   );
 }

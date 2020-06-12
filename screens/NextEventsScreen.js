@@ -3,7 +3,6 @@ import {View, StyleSheet, TouchableWithoutFeedback} from 'react-native';
 import TextBody from '../components/TextBody';
 import { Ionicons } from '@expo/vector-icons';
 
-
 const NextEventsScreen = ({ navigation }) => {
   React.useLayoutEffect(() => {
     navigation.setOptions({
